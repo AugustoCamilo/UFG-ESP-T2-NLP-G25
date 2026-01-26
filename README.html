@@ -1,0 +1,647 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>README.md</title>
+<meta http-equiv="Content-type" content="text/html;charset=UTF-8">
+
+<style>
+/* https://github.com/microsoft/vscode/blob/master/extensions/markdown-language-features/media/markdown.css */
+/*---------------------------------------------------------------------------------------------
+ *  Copyright (c) Microsoft Corporation. All rights reserved.
+ *  Licensed under the MIT License. See License.txt in the project root for license information.
+ *--------------------------------------------------------------------------------------------*/
+
+body {
+	font-family: var(--vscode-markdown-font-family, -apple-system, BlinkMacSystemFont, "Segoe WPC", "Segoe UI", "Ubuntu", "Droid Sans", sans-serif);
+	font-size: var(--vscode-markdown-font-size, 14px);
+	padding: 0 26px;
+	line-height: var(--vscode-markdown-line-height, 22px);
+	word-wrap: break-word;
+}
+
+#code-csp-warning {
+	position: fixed;
+	top: 0;
+	right: 0;
+	color: white;
+	margin: 16px;
+	text-align: center;
+	font-size: 12px;
+	font-family: sans-serif;
+	background-color:#444444;
+	cursor: pointer;
+	padding: 6px;
+	box-shadow: 1px 1px 1px rgba(0,0,0,.25);
+}
+
+#code-csp-warning:hover {
+	text-decoration: none;
+	background-color:#007acc;
+	box-shadow: 2px 2px 2px rgba(0,0,0,.25);
+}
+
+body.scrollBeyondLastLine {
+	margin-bottom: calc(100vh - 22px);
+}
+
+body.showEditorSelection .code-line {
+	position: relative;
+}
+
+body.showEditorSelection .code-active-line:before,
+body.showEditorSelection .code-line:hover:before {
+	content: "";
+	display: block;
+	position: absolute;
+	top: 0;
+	left: -12px;
+	height: 100%;
+}
+
+body.showEditorSelection li.code-active-line:before,
+body.showEditorSelection li.code-line:hover:before {
+	left: -30px;
+}
+
+.vscode-light.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(0, 0, 0, 0.15);
+}
+
+.vscode-light.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(0, 0, 0, 0.40);
+}
+
+.vscode-light.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+.vscode-dark.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(255, 255, 255, 0.4);
+}
+
+.vscode-dark.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(255, 255, 255, 0.60);
+}
+
+.vscode-dark.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+.vscode-high-contrast.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(255, 160, 0, 0.7);
+}
+
+.vscode-high-contrast.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(255, 160, 0, 1);
+}
+
+.vscode-high-contrast.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+img {
+	max-width: 100%;
+	max-height: 100%;
+}
+
+a {
+	text-decoration: none;
+}
+
+a:hover {
+	text-decoration: underline;
+}
+
+a:focus,
+input:focus,
+select:focus,
+textarea:focus {
+	outline: 1px solid -webkit-focus-ring-color;
+	outline-offset: -1px;
+}
+
+hr {
+	border: 0;
+	height: 2px;
+	border-bottom: 2px solid;
+}
+
+h1 {
+	padding-bottom: 0.3em;
+	line-height: 1.2;
+	border-bottom-width: 1px;
+	border-bottom-style: solid;
+}
+
+h1, h2, h3 {
+	font-weight: normal;
+}
+
+table {
+	border-collapse: collapse;
+}
+
+table > thead > tr > th {
+	text-align: left;
+	border-bottom: 1px solid;
+}
+
+table > thead > tr > th,
+table > thead > tr > td,
+table > tbody > tr > th,
+table > tbody > tr > td {
+	padding: 5px 10px;
+}
+
+table > tbody > tr + tr > td {
+	border-top: 1px solid;
+}
+
+blockquote {
+	margin: 0 7px 0 5px;
+	padding: 0 16px 0 10px;
+	border-left-width: 5px;
+	border-left-style: solid;
+}
+
+code {
+	font-family: Menlo, Monaco, Consolas, "Droid Sans Mono", "Courier New", monospace, "Droid Sans Fallback";
+	font-size: 1em;
+	line-height: 1.357em;
+}
+
+body.wordWrap pre {
+	white-space: pre-wrap;
+}
+
+pre:not(.hljs),
+pre.hljs code > div {
+	padding: 16px;
+	border-radius: 3px;
+	overflow: auto;
+}
+
+pre code {
+	color: var(--vscode-editor-foreground);
+	tab-size: 4;
+}
+
+/** Theming */
+
+.vscode-light pre {
+	background-color: rgba(220, 220, 220, 0.4);
+}
+
+.vscode-dark pre {
+	background-color: rgba(10, 10, 10, 0.4);
+}
+
+.vscode-high-contrast pre {
+	background-color: rgb(0, 0, 0);
+}
+
+.vscode-high-contrast h1 {
+	border-color: rgb(0, 0, 0);
+}
+
+.vscode-light table > thead > tr > th {
+	border-color: rgba(0, 0, 0, 0.69);
+}
+
+.vscode-dark table > thead > tr > th {
+	border-color: rgba(255, 255, 255, 0.69);
+}
+
+.vscode-light h1,
+.vscode-light hr,
+.vscode-light table > tbody > tr + tr > td {
+	border-color: rgba(0, 0, 0, 0.18);
+}
+
+.vscode-dark h1,
+.vscode-dark hr,
+.vscode-dark table > tbody > tr + tr > td {
+	border-color: rgba(255, 255, 255, 0.18);
+}
+
+</style>
+
+<style>
+/* Tomorrow Theme */
+/* http://jmblog.github.com/color-themes-for-google-code-highlightjs */
+/* Original theme - https://github.com/chriskempson/tomorrow-theme */
+
+/* Tomorrow Comment */
+.hljs-comment,
+.hljs-quote {
+	color: #8e908c;
+}
+
+/* Tomorrow Red */
+.hljs-variable,
+.hljs-template-variable,
+.hljs-tag,
+.hljs-name,
+.hljs-selector-id,
+.hljs-selector-class,
+.hljs-regexp,
+.hljs-deletion {
+	color: #c82829;
+}
+
+/* Tomorrow Orange */
+.hljs-number,
+.hljs-built_in,
+.hljs-builtin-name,
+.hljs-literal,
+.hljs-type,
+.hljs-params,
+.hljs-meta,
+.hljs-link {
+	color: #f5871f;
+}
+
+/* Tomorrow Yellow */
+.hljs-attribute {
+	color: #eab700;
+}
+
+/* Tomorrow Green */
+.hljs-string,
+.hljs-symbol,
+.hljs-bullet,
+.hljs-addition {
+	color: #718c00;
+}
+
+/* Tomorrow Blue */
+.hljs-title,
+.hljs-section {
+	color: #4271ae;
+}
+
+/* Tomorrow Purple */
+.hljs-keyword,
+.hljs-selector-tag {
+	color: #8959a8;
+}
+
+.hljs {
+	display: block;
+	overflow-x: auto;
+	color: #4d4d4c;
+	padding: 0.5em;
+}
+
+.hljs-emphasis {
+	font-style: italic;
+}
+
+.hljs-strong {
+	font-weight: bold;
+}
+</style>
+
+<style>
+/*
+ * Markdown PDF CSS
+ */
+
+ body {
+	font-family: -apple-system, BlinkMacSystemFont, "Segoe WPC", "Segoe UI", "Ubuntu", "Droid Sans", sans-serif, "Meiryo";
+	padding: 0 12px;
+}
+
+pre {
+	background-color: #f8f8f8;
+	border: 1px solid #cccccc;
+	border-radius: 3px;
+	overflow-x: auto;
+	white-space: pre-wrap;
+	overflow-wrap: break-word;
+}
+
+pre:not(.hljs) {
+	padding: 23px;
+	line-height: 19px;
+}
+
+blockquote {
+	background: rgba(127, 127, 127, 0.1);
+	border-color: rgba(0, 122, 204, 0.5);
+}
+
+.emoji {
+	height: 1.4em;
+}
+
+code {
+	font-size: 14px;
+	line-height: 19px;
+}
+
+/* for inline code */
+:not(pre):not(.hljs) > code {
+	color: #C9AE75; /* Change the old color so it seems less like an error */
+	font-size: inherit;
+}
+
+/* Page Break : use <div class="page"/> to insert page break
+-------------------------------------------------------- */
+.page {
+	page-break-after: always;
+}
+
+</style>
+
+<script src="https://unpkg.com/mermaid/dist/mermaid.min.js"></script>
+</head>
+<body>
+  <script>
+    mermaid.initialize({
+      startOnLoad: true,
+      theme: document.body.classList.contains('vscode-dark') || document.body.classList.contains('vscode-high-contrast')
+          ? 'dark'
+          : 'default'
+    });
+  </script>
+<h1 id="%F0%9F%8F%9B%EF%B8%8F-chatbot-rag---programa-quita-goi%C3%A1s">🏛️ Chatbot RAG - Programa Quita Goiás</h1>
+<blockquote>
+<p><strong>Arquitetura:</strong> Modular Monolith Async | <strong>Orquestração:</strong> LangGraph | <strong>LLM:</strong> Google Gemini 2.5 Flash</p>
+</blockquote>
+<p>Este projeto implementa um assistente virtual de alta performance baseado em <strong>RAG (Retrieval-Augmented Generation)</strong>.
+Projetado para responder dúvidas sobre legislação tributária com precisão, ele utiliza uma arquitetura assíncrona moderna, persistência estruturada via <strong>SQLModel</strong> e um pipeline de recuperação híbrida (Vetorial + Re-ranking).</p>
+<p>O grande diferencial é a sua <strong>Suíte de Auditoria e Avaliação (QA Suite)</strong>, que permite a criação de &quot;Gabaritos&quot; (Ground Truth) persistentes no banco de dados, garantindo transparência e métricas auditáveis (Hit Rate, MRR, Precision@K).</p>
+<hr>
+<h2 id="%F0%9F%92%A1-dica-de-visualiza%C3%A7%C3%A3o-diagramas">💡 Dica de Visualização (Diagramas)</h2>
+<p>Este documento contém diagramas de arquitetura complexos usando a sintaxe <strong>Mermaid</strong>. Para visualizá-los corretamente (renderizados como gráficos e não como código), recomenda-se o seguinte ambiente:</p>
+<ul>
+<li><strong>Editor de Código:</strong> <a href="https://code.visualstudio.com/download">Visual Studio Code (VS Code)</a></li>
+<li><strong>Extensão Recomendada:</strong> <a href="https://marketplace.visualstudio.com/items?itemName=bierner.markdown-mermaid">Markdown Preview Mermaid Support</a> (por Matt Bierner).</li>
+</ul>
+<hr>
+<h2 id="%F0%9F%A7%A9-arquitetura-da-solu%C3%A7%C3%A3o">🧩 Arquitetura da Solução</h2>
+<p>O sistema opera de forma assíncrona para garantir fluidez na UI enquanto processa chamadas pesadas de LLM e Banco de Dados.</p>
+<pre><code class="language-mermaid"><div class="mermaid">graph TD
+    Usuário -->|Entrada / Pergunta| UI[Aplicação Principal Web]
+    UI -->|Chamada Assíncrona| Chain[LangGraph RAG Chain]
+    
+    subgraph "Base de Conhecimento"
+        PDF[PDF Docs/XML] -->|Alimentação| ETL[PyMuPDF + Splitter]
+        ETL -->|Embeddings| VectorDB[(ChromaDB)]
+    end
+
+    subgraph "Motor Principal"
+        Chain -->|1. Carrega Histórico| SQL[(SQLite/SQLModel)]
+        Chain -->|2. Recuperação contexto| Retriever[Recuperação Híbrida]
+        Retriever -->|Recuperação| VectorDB
+        Retriever -->|Precisão| Reranker[Cross-Encoder]
+        Chain -->|3. Prompt estruturado| LLM[Google Gemini 2.5]
+    end
+
+    LLM -->|Resposta| Chain
+    Chain -->|Registros de Persistência| SQL
+    Chain -->|Resposta| UI
+</div></code></pre>
+<h3 id="fluxo-de-trabalho-de-dados-e-qa">Fluxo de Trabalho de Dados e QA</h3>
+<p>Este diagrama ilustra como as ferramentas de suporte (<code>validate_*.py</code> e <code>edit_*.py</code>) interagem para garantir a qualidade contínua do chatbot.</p>
+<pre><code class="language-mermaid"><div class="mermaid">graph TD
+    %% Atores (Humanos)
+    QA(QA / Especialista) -->|1. Cria Gabarito| ValDB[validate_vector_db.py]
+    Analyst(Analista de Dados) -->|2. Corrige & Cura| ValEdit[edit_evaluation.py]
+    Analyst -->|3. Analisa Métricas| ValEval[validate_evaluation.py]
+    Admin(Admin do Sistema) -->|4. Audita Produção| ValHist[validate_history_db.py]
+
+    %% Componentes Reutilizados do Core
+    subgraph "Módulo Principal"
+        Recuperador[VectorRetriever]
+    end
+
+    %% Armazenamento
+    subgraph "Camada de Dados"
+        VectorDB[(ChromaDB)]
+        SQL_Val[(Tabela: ValidationRuns)]
+        SQL_Prod[(Tabela: ChatHistory)]
+    end
+
+    %% Fluxo de Coleta (Criação)
+    ValDB -->|Usuário| Recuperador
+    Recuperador -->|Busca| VectorDB
+    ValDB -->|Insert: Queries & Scores| SQL_Val
+
+    %% Fluxo de Curadoria (Edição)
+    ValEdit <-->|Leitura/Atualização: Recalcula Métricas| SQL_Val
+
+    %% Fluxo de Análise (Leitura)
+    ValEval -->|Leitura: Hit Rate / MRR| SQL_Val
+    ValEval <-->|Importar/Exportar Dataset| XML[📄 Arquivos XML]
+
+    %% Fluxo de Auditoria (Produção)
+    ValHist -->|Leitura: Sessões & Feedback| SQL_Prod
+    ValHist -->|Exportar Dados| CSV[📊 CSV / XML / Charts]
+
+</div></code></pre>
+<h3 id="destaques-t%C3%A9cnicos">Destaques Técnicos</h3>
+<ul>
+<li><strong>Hybrid Retrieval:</strong> Combina a velocidade da busca vetorial (<code>all-MiniLM-L6-v2</code>) com a precisão semântica de um Cross-Encoder (<code>ms-marco-MiniLM-L6-v2</code>) para reordenar os resultados.</li>
+<li><strong>LangGraph:</strong> Orquestração de estado (<em>Stateful</em>) para gerenciar o fluxo de conversação e memória de curto prazo.</li>
+<li><strong>Async SQLModel:</strong> Uso de <code>aiosqlite</code> e <code>SQLAlchemy 2.0</code> para persistência não-bloqueante de históricos, feedbacks e métricas de validação.</li>
+<li><strong>Auditabilidade Total:</strong> Todas as validações manuais (Gabaritos) são salvas no banco de dados, permitindo a reprodução de testes e auditoria de viés.</li>
+</ul>
+<hr>
+<h2 id="%F0%9F%93%82-estrutura-do-projeto">📂 Estrutura do Projeto</h2>
+<pre class="hljs"><code><div>📂 rag_chatbot
+│
+├── 📂 docs/                        # [Input] Coloque aqui seus PDFs e XMLs
+│
+├── 📂 database/                    # [Storage] Persistência Relacional
+│   └── 💾 chat_solution.db         # Histórico, Feedbacks e Validações
+│
+├── 📂 vector_db/                   # [Storage] Banco Vetorial ChromaDB
+│   └── 💾 ...                      # Arquivos do ChromaDB
+│
+├── 📜 app.py                       # [App] Interface de Chat (Produção)
+├── 📜 rag_chain.py                 # [Core] Lógica RAG e LangGraph
+├── 📜 vector_retriever.py          # [Core] Motor de Busca (Recall + Rerank)
+├── 📜 database.py                  # [Model] Schemas do Banco (SQLModel)
+├── 📜 settings.py                  # [Config] Variáveis de Ambiente e Caminhos
+├── 📜 ui_utils.py                  # [Utils] Helpers de UI (Impressão, Foco)
+│
+├── 🔧 ETL &amp; Ingestão
+│   ├── 📜 ingest.py                # Pipeline PDF -&gt; Chunks Fixos -&gt; VectorDB
+│   └── 📜 ingest_xml.py            # Pipeline XML -&gt; Chunks Semânticos -&gt; VectorDB
+│
+└── 🛠️ Ferramentas de Auditoria &amp; QA
+    ├── 📜 validate_vector_db.py    # [Coleta] Teste de Retrieval e Criação de Gabarito
+    ├── 📜 edit_evaluation.py       # [Curadoria] Editor para corrigir avaliações e recalcular métricas
+    ├── 📜 validate_evaluation.py   # [Análise] Dashboard de Métricas (HR, MRR, P@K)
+    └── 📜 validate_history_db.py   # [Auditoria] Logs de Produção, Gráficos e Feedbacks
+
+</div></code></pre>
+<h2 id="%F0%9F%9A%80-instala%C3%A7%C3%A3o-e-configura%C3%A7%C3%A3o">🚀 Instalação e Configuração</h2>
+<h3 id="1-pr%C3%A9-requisitos">1. Pré-requisitos</h3>
+<ul>
+<li>Python 3.10+</li>
+<li>Chave de API do Google AI Studio (<code>GEMINI_API_KEY</code>)</li>
+</ul>
+<h3 id="2-configura%C3%A7%C3%A3o-do-ambiente">2. Configuração do Ambiente</h3>
+<p><strong>Opção A: Usando <code>venv</code> (Padrão do Python)</strong></p>
+<pre class="hljs"><code><div><span class="hljs-comment"># 1. Crie o ambiente (usando o nome 'rag_solution')</span>
+python -m venv rag_solution
+
+<span class="hljs-comment"># 2. Ative o ambiente</span>
+<span class="hljs-comment"># Windows</span>
+.\rag_solution\Scripts\activate
+<span class="hljs-comment"># macOS/Linux</span>
+<span class="hljs-built_in">source</span> rag_solution/bin/activate
+</div></code></pre>
+<hr>
+<p><strong>Opção B: Usando <code>conda</code> (Anaconda)</strong></p>
+<pre class="hljs"><code><div><span class="hljs-comment"># 1. Crie o ambiente (usando o nome 'rag_solution' e especificando Python 3.10+)</span>
+conda create -n rag_solution python=3.10
+
+<span class="hljs-comment"># 2. Ative o ambiente</span>
+conda activate rag_solution
+</div></code></pre>
+<h3 id="3-instala%C3%A7%C3%A3o-das-depend%C3%AAncias">3. Instalação das Dependências</h3>
+<p>Com o ambiente virtual (<code>rag_solution</code>) ativo, instale todas as bibliotecas listadas no <code>requirements.txt</code>:</p>
+<pre class="hljs"><code><div>pip install -r requirements.txt
+</div></code></pre>
+<h3 id="4-vari%C3%A1veis-de-ambiente">4. Variáveis de Ambiente</h3>
+<p>Crie um arquivo <code>.env</code> na raiz do projeto:</p>
+<pre class="hljs"><code><div><span class="hljs-attr">GEMINI_API_KEY</span>=<span class="hljs-string">"sua_chave_aqui"</span>
+<span class="hljs-attr">DATABASE_URL</span>=<span class="hljs-string">"sqlite+aiosqlite:///./database/chat_database.db"</span>
+</div></code></pre>
+<h3 id="5-ingest%C3%A3o-de-dados">5. Ingestão de Dados</h3>
+<p>Coloque seus arquivos na pasta <code>docs/</code> e execute o pipeline correspondente ao formato dos seus dados:</p>
+<p><strong>Opção A: Arquivos PDF (Ingestão Padrão)</strong></p>
+<p>Para processar documentos PDF brutos. O sistema fará a limpeza, sanitização e divisão (splitting) automática baseada em caracteres.</p>
+<pre class="hljs"><code><div>python ingest.py
+</div></code></pre>
+<p><strong>Opção B: Arquivos XML (Semantic Chunking)</strong></p>
+<p>Para ingerir dados que já passaram por um processo de &quot;Semantic Chunking&quot; externo e estão estruturados em XML (Pergunta/Resposta/Metadados).</p>
+<pre class="hljs"><code><div>python ingest_xml.py
+</div></code></pre>
+<p><em>(Nota: Ambos os scripts recriam automaticamente as pastas <code>database/</code> e <code>vector_db/</code>. <strong>Execute apenas um dos scripts</strong>, dependendo de qual fonte de dados você deseja utilizar no momento.)</em></p>
+<hr>
+<h2 id="%F0%9F%96%A5%EF%B8%8F-guia-de-utiliza%C3%A7%C3%A3o">🖥️ Guia de Utilização</h2>
+<p>O projeto é composto por <strong>5 aplicações Streamlit</strong> distintas. Execute-as em terminais separados conforme a necessidade.</p>
+<h3 id="1-chatbot-produ%C3%A7%C3%A3o">1. Chatbot (Produção)</h3>
+<p>A interface principal para o usuário final.</p>
+<pre class="hljs"><code><div>streamlit run app.py
+</div></code></pre>
+<h3 id="2-su%C3%ADte-de-avalia%C3%A7%C3%A3o-data-driven-development">2. Suíte de Avaliação (Data-Driven Development)</h3>
+<p>Ferramentas para engenheiros e especialistas de domínio validarem a qualidade do bot.</p>
+<h4 id="a-coleta-de-m%C3%A9tricas-o-%22gabarito%22">A. Coleta de Métricas (O &quot;Gabarito&quot;)</h4>
+<p>Ferramenta para testar queries e marcar manualmente quais chunks são relevantes. Essencial para calcular a precisão do sistema.</p>
+<pre class="hljs"><code><div>streamlit run validate_vector_db.py
+</div></code></pre>
+<blockquote>
+<p><strong>Fluxo de Uso:</strong></p>
+<ol>
+<li>Digite uma pergunta.</li>
+<li>Veja os resultados do RAG.</li>
+<li>Marque os checkboxes dos trechos corretos (<strong>Hit Rate</strong>).</li>
+<li>Selecione o melhor trecho no Radio Button (<strong>MRR</strong>).</li>
+<li>Salve a avaliação.</li>
+</ol>
+</blockquote>
+<h4 id="b-dashboard-de-performance">B. Dashboard de Performance</h4>
+<p>Analisa os dados coletados na etapa anterior, exibindo métricas consolidadas.</p>
+<pre class="hljs"><code><div>streamlit run validate_evaluation.py
+</div></code></pre>
+<ul>
+<li><strong>Métricas:</strong> Hit Rate, MRR, Precision@K e Precision@1.</li>
+<li><strong>Import/Export:</strong> Permite importar dados validados de XML para análises históricas.</li>
+</ul>
+<h4 id="c-auditoria-de-hist%C3%B3rico">C. Auditoria de Histórico</h4>
+<p>Monitora o uso real em produção.</p>
+<pre class="hljs"><code><div>streamlit run validate_history_db.py
+</div></code></pre>
+<ul>
+<li><strong>Resumo Visual:</strong> Gráficos de Pizza interativos comparando satisfação (Likes/Dislikes) entre Usuários Reais e Testes Sintéticos.</li>
+<li><strong>Backup:</strong> Exportação completa do histórico de conversas e feedbacks para XML e CSV.</li>
+</ul>
+<hr>
+<h2 id="%F0%9F%93%8A-entendendo-as-m%C3%A9tricas">📊 Entendendo as Métricas</h2>
+<table>
+<thead>
+<tr>
+<th>Métrica</th>
+<th>O que mede?</th>
+<th>Interpretação</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Hit Rate</strong></td>
+<td>Capacidade de encontrar <em>alguma</em> resposta útil.</td>
+<td>Se a resposta certa apareceu (mesmo em 3º lugar), é 1. Se não, 0.</td>
+</tr>
+<tr>
+<td><strong>MRR</strong></td>
+<td>Qualidade da ordenação (Ranking).</td>
+<td>Se a melhor resposta é a 1ª, MRR=1.0. Se for a 2ª, MRR=0.5. Se for a 3ª, MRR=0.33.</td>
+</tr>
+<tr>
+<td><strong>Precision@K</strong></td>
+<td>Densidade</td>
+<td>Quanto &quot;ruído&quot; veio junto? (Ex: 2 chunks úteis de 3 = 0.66)</td>
+</tr>
+<tr>
+<td><strong>Precision@1</strong></td>
+<td>&quot;Tiro Certeiro&quot;</td>
+<td>O 1º resultado sozinho responde à pergunta?</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<h2 id="%F0%9F%9B%A0%EF%B8%8F-stack-tecnol%C3%B3gico">🛠️ Stack Tecnológico</h2>
+<ul>
+<li><strong>Frontend:</strong> Streamlit 1.50 (com Altair Charts)</li>
+<li><strong>Core AI:</strong> LangChain 1.0, LangGraph, Google Gemini 2.5</li>
+<li><strong>Data:</strong> SQLModel (SQLAlchemy + Pydantic), ChromaDB (Vector Store)</li>
+<li><strong>NLP:</strong> Sentence-Transformers (Embeddings + Cross-Encoders)</li>
+<li><strong>Utils:</strong> PyMuPDF, Python-Dotenv</li>
+</ul>
+<hr>
+<h2 id="6-%F0%9F%94%84-nota-sobre-o-desenvolvimento-a-abordagem-%22vibe-coding%22">6. 🔄 Nota sobre o Desenvolvimento: A Abordagem &quot;Vibe Coding&quot;</h2>
+<p>Este projeto foi construído utilizando o paradigma de Vibe Coding (Intent-Based Programming).
+Diferente da codificação tradicional, aqui o foco deslocou-se da sintaxe manual para a arquitetura, fluxo de dados e regras de negócio, enquanto a IA assumiu a implementação pesada com padrões de engenharia modernos.</p>
+<p>A colaboração seguiu uma dinâmica fluida de &quot;Human-in-the-Loop&quot;:</p>
+<ul>
+<li>
+<p><strong>👨‍💻 Engenheiro Humano (Arquiteto &amp; Vibe Keeper):</strong></p>
+<ul>
+<li>Responsável pela <strong>Intenção e Visão</strong>: Definição do &quot;quê&quot; e do &quot;porquê&quot;.</li>
+<li>Arquitetura de Solução: Escolha da stack (LangGraph, SQLModel, Streamlit).</li>
+<li>Curadoria de Código: Revisão crítica de segurança, lógica de negócios e auditoria de métricas.</li>
+</ul>
+</li>
+<li>
+<p><strong>🤖 Google Gemini (AI Pair Programmer):</strong></p>
+<ul>
+<li>Implementação &quot;Zero-Friction&quot;: Transformação de prompts em linguagem natural diretamente em código Python tipado, assíncrono e documentado.</li>
+<li>Refatoração Proativa: Aplicação imediata de Design Patterns e migração de scripts síncronos para asyncio.</li>
+<li>Manutenção de Contexto: Geração de testes e documentação técnica alinhada ao estilo do projeto.</li>
+<li>Refatoração para padrões modernos (migração para <code>async/await</code>).</li>
+</ul>
+</li>
+<li>
+<p><strong>🔄 Fluxo de Trabalho:</strong></p>
+<ul>
+<li><strong>Intenção</strong>: O desenvolvedor define o objetivo (ex: &quot;Criar um dashboard de auditoria com gráficos&quot;).</li>
+<li><strong>Vibe Coding</strong>: A IA gera a solução completa seguindo as diretrizes de qualidade do projeto.</li>
+<li><strong>Refinamento</strong>: Ajustes finos de UI/UX e validação de lógica pelo humano.</li>
+</ul>
+</li>
+</ul>
+<pre><code class="language-mermaid"><div class="mermaid">graph TD
+    A[👨‍💻 Intenção & Arquitetura] -->|Linguagem Natural| B[🤖 Vibe Coding Engine]
+    B -->|⚡ Código de Alta qualidade| C[👨‍💻 Revisão de Código & Teste]
+    C -->|❌ Refinamento| B
+    C -->|✅ Aprovado| D[🚀 Deploy/Commit]
+</div></code></pre>
+
+</body>
+</html>
